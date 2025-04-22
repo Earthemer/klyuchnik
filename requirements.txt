@@ -1,0 +1,6 @@
+asyncpg
+cryptography
+python-dotenv
+typer[all] # Добавляем Typer для CLI, [all] подключит rich для красоты
+pytest
+pytest-asyncio # Для тестирования async кода
