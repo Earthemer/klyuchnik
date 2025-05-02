@@ -28,7 +28,7 @@ env/
 Thumbs.db
 
 # Log files
-*.log
+logs/
 
 # Build artifacts
 dist/
