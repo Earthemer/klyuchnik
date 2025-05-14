@@ -39,3 +39,5 @@ build/
 .pytest_cache/
 coverage/
 .coverage
+
+core/testcode.py
