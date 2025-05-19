@@ -1,32 +1,44 @@
-# Klychnik Password Manager
+# Проект "Ключник" (Klychnik)
 
-## Description
+## Описание
 
-"Klychnik" is a secure, local, asynchronous command-line password manager being developed in Python. The project aims to create a reliable and simple tool for managing passwords, with special attention to data storage security and best development practices.
+"Ключник" — это безопасный, локальный, асинхронный консольный менеджер паролей, разрабатываемый на Python. Проект нацелен на создание надежного и простого инструмента для управления паролями с особым вниманием к безопасности хранения данных и соблюдению лучших практик разработки.
 
-## Key Features (MVP - Minimum Viable Product)
+## Ключевые особенности (MVP — Минимально жизнеспособный продукт)
 
-*   **Local Storage:** Data is stored locally in a PostgreSQL database. For binary data security, such as hashes, salts, and ciphertext, the `BYTEA` data type is used.
-*   **Master Password:** Access to the storage is protected by a unique user master password.
-*   **Robust Security:**
-    *   Master password hashing is implemented using the PBKDF2HMAC algorithm with a unique cryptographic salt for each user.
-    *   All sensitive entry data (service passwords, URLs, notes) are subjected to symmetric encryption using Fernet (AES).
-    *   The encryption key is generated based on the master password and user salt upon each login and stored exclusively in operative memory during an active session.
-*   **Core Operations (CRUD):** Supports operations for adding, listing entries (displaying only non-sensitive fields), retrieving full entry information (with "on-the-fly" decryption), and deleting entries. Managed data includes: Service Name, Service Username, Service Password, URL, and Notes.
-*   **Command-Line Interface (CLI):** Interaction with the application is done via terminal commands implemented using the `Typer` library.
-*   **Asynchronicity:** All interactions with the PostgreSQL database are performed asynchronously using the `asyncpg` library to improve performance.
-*   **Configuration:** Key application parameters (database settings, cryptographic parameters, logging level) are externalized to `.env` files for flexible configuration.
+- **Локальное хранилище:**  
+  Данные хранятся локально в базе данных PostgreSQL. Для хранения бинарных данных, таких как хеши, соли и шифротекст, используется тип `BYTEA`.
 
-## Technology Stack
+- **Мастер-пароль:**  
+  Доступ к хранилищу защищён уникальным мастер-паролем пользователя.
 
-*   **Language:** Python 3.12+
-*   **Asynchronicity:** `asyncio`, `asyncpg`
-*   **Database:** PostgreSQL (with active use of `BYTEA` type)
-*   **Cryptography:** `cryptography` library (PBKDF2HMAC, Fernet)
-*   **Command-Line Interface (CLI):** `Typer`
-*   **Configuration Management:** `python-dotenv`
-*   **Logging:** Standard `logging` module
+- **Надёжная безопасность:**  
+  - Хеширование мастер-пароля реализовано с использованием PBKDF2HMAC и уникальной криптографической соли для каждого пользователя.  
+  - Все чувствительные поля записей (пароли сервисов, URL, заметки) шифруются симметрично с использованием Fernet (AES).  
+  - Ключ шифрования генерируется на основе мастер-пароля и соли пользователя при каждом входе и хранится исключительно в оперативной памяти во время активной сессии.
 
-## Status
+- **Основные операции (CRUD):**  
+  Поддерживаются: добавление записей, просмотр списка (без отображения конфиденциальных полей), получение полной информации (с дешифровкой "на лету") и удаление записей. Управляемые поля: название сервиса, логин, пароль, URL, заметки.
 
-The project is under active development.
+- **Консольный интерфейс (CLI):**  
+  Управление осуществляется через команды в терминале с использованием библиотеки `Typer`.
+
+- **Асинхронность:**  
+  Все операции с PostgreSQL выполняются асинхронно при помощи библиотеки `asyncpg` для повышения производительности.
+
+- **Гибкая конфигурация:**  
+  Все ключевые параметры (настройки базы данных, параметры криптографии, уровень логирования) вынесены во внешние `.env`-файлы.
+
+## Технологический стек
+
+- **Язык программирования:** Python 3.12+  
+- **Асинхронность:** `asyncio`, `asyncpg`  
+- **База данных:** PostgreSQL (используется тип `BYTEA`)  
+- **Криптография:** Библиотека `cryptography` (PBKDF2HMAC, Fernet)  
+- **CLI:** `Typer`  
+- **Конфигурация:** `python-dotenv`  
+- **Логирование:** стандартный модуль `logging`
+
+## Статус
+
+Проект находится в стадии активной разработки.

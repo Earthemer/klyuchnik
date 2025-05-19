@@ -5,7 +5,7 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.fernet import Fernet, InvalidToken
 from cryptography.exceptions import InvalidKey
-from core.loggin_config import log_error
+from core.logging_config import log_error
 
 logger = logging.getLogger(__name__)
 
